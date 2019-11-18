@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Create a new Student</h1>
+    <h1>Create a new Administrator</h1>
     <form @submit.prevent="create">
       <div>
         username: <input v-model="username" type="text">
@@ -35,7 +35,7 @@
         },
         methods: {
             create() {
-                this.$axios.$post('/api/administrators', {
+                this.$axios.$post('http://localhost:8080/SportsClubManagement_war_exploded/api/administrators', {
                     username: this.username,
                     password: this.password,
                     name: this.name,
