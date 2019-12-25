@@ -9,8 +9,8 @@
         </template>
       </b-table>
       <nuxt-link to="/">Back</nuxt-link>
+      <nuxt-link to="/athletes/create">Create a New Athlete</nuxt-link>
     </b-container>
-    <nuxt-link to="/athletes/create">Create a New Athlete</nuxt-link>
   </div>
 </template>
 <script>

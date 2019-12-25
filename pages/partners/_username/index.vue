@@ -21,7 +21,7 @@
         },
         created() {
             this.$axios.$get(`http://localhost:8080/SportsClubManagement_war_exploded/api/partners/${this.username}`)
-                .then(partners => this.partners = partners || {})
+                .then(partner => this.partner = partner || {})
         },
     }
 </script>

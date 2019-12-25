@@ -29,8 +29,9 @@
         },
         methods: {
             destroy(id) {
+                console.log(id)
                 this.$axios.$delete(`http://localhost:8080/SportsClubManagement_war_exploded/api/modalities/${id}`)
-                window.location.reload()
+                //window.location.reload()
             }
         }
     }

@@ -42,12 +42,25 @@ module.exports = {
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/toast',
+    '@nuxtjs/auth'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    proxy: true,
+    credentials: true
+  },
+
+  proxy: {
+    '/api/': {
+      target: 'http://localhost:8080/SportsClubManagement_war_exploded/api/',
+      pathRewrite: {
+        '^/api/': ''
+      }
+    }
   },
   /*
   ** Build configuration
@@ -58,5 +71,35 @@ module.exports = {
     */
     extend (config, ctx) {
     }
-  }
+  },
+  auth: {
+    redirect: {
+      login: '/auth/login',
+      logout: '/',
+      home: '/'
+    },
+    watchLoggedIn: true,
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/api/login/token',
+            method: 'post',
+            propertyName: 'token'
+          },
+          logout: false,
+          user: {
+            url: '/api/login/claims',
+            method: 'get',
+            propertyName: ''
+          }
+        },
+      }
+    }
+  },
+  router: {
+    middleware: [
+      'auth'
+    ]
+  },
 }
