@@ -9,6 +9,7 @@
     <nuxt-link to="/modalities" class="btn btn-link">Modality</nuxt-link>
     <nuxt-link to="/athletes" class="btn btn-link">Athletes</nuxt-link>
     <nuxt-link to="/partners" class="btn btn-link">Partners</nuxt-link>
+    <nuxt-link to="/subscriptions" class="btn btn-link">Subscriptions</nuxt-link>
   </b-container>
 </template>
 <script>

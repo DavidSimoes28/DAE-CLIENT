@@ -5,7 +5,7 @@
         <b-button type="Submit" class="btn-success">Logout</b-button>
       </b-form>
     </div>
-  <nuxt/>
+  <nuxt />
   </div>
 </template>
 <script>
