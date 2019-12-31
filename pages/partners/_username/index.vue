@@ -5,6 +5,7 @@
     <p>Name: {{ partner.name }}</p>
     <p>Email: {{ partner.email }}</p>
     <nuxt-link to="/partners">Back</nuxt-link>
+    <nuxt-link :to="`/partners/${username}/payments`">Payments</nuxt-link>
   </b-container>
 </template>
 <script>

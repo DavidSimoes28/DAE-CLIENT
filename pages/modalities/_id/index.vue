@@ -25,6 +25,7 @@
     </b-table>
     <p v-else>No schedules enrolled.</p>
 
+    <nuxt-link class="btn btn-link" :to="`/modalities/${id}/addSchedules`">Add Schedules</nuxt-link>
     <nuxt-link to="/modalities">Back</nuxt-link>
   </b-container>
 </template>
