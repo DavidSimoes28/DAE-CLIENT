@@ -17,7 +17,7 @@
             return {
                 classe: {},
                 athletesPresent:[],
-                athletesPresentFields: ['username', 'name',"email","actions"],
+                athletesPresentFields: ['username', 'name',"email"],
             }
         },
         computed: {
