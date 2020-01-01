@@ -1,6 +1,13 @@
 <template>
   <div>
     <b-container>
+      <div>
+        Username: <b-input v-model="username" type="text"/>
+      </div>
+      <div>
+        <button class="btn btn-link" v-on:click.prevent="filterPartners">Filter</button>
+        <button class="btn btn-link" v-on:click.prevent="filterReset">Reset Filters</button>
+      </div>
       <b-table striped over :items="administrators" :fields="fields">
         <template v-slot:cell(actions)="row">
           <nuxt-link class="btn btn-link" :to="`/administrators/${row.item.username}`">Details</nuxt-link>
@@ -11,6 +18,7 @@
       <nuxt-link to="/">Back</nuxt-link>
     </b-container>
     <nuxt-link to="/administrators/create">Create a New Administrator</nuxt-link>
+    <nuxt-link to="/administrators/email-send">Send-email</nuxt-link>
   </div>
 </template>
 <script>
@@ -18,7 +26,8 @@
         data () {
             return {
                 fields: ['username', 'name', 'email','actions'],
-                administrators: []
+                administrators: [],
+                username: ""
             }
         },
         created () {
@@ -29,8 +38,22 @@
         },
         methods: {
             destroy(username) {
-                this.$axios.$delete(`http://localhost:8080/SportsClubManagement_war_exploded/api/administrators/${username}`)
-                window.location.reload()
+                this.$axios.$delete(`http://localhost:8080/SportsClubManagement_war_exploded/api/administrators/${username}`);
+                this.$axios.$get("http://localhost:8080/SportsClubManagement_war_exploded/api/administrators")
+                    .then(administrators => {
+                        this.administrators = administrators
+                    });
+            },
+            filterPartners(){
+                this.$axios.$post("http://localhost:8080/SportsClubManagement_war_exploded/api/administrators/filter", {
+                    username: this.username,
+                }).then(administrators => this.administrators = administrators);
+            },
+            filterReset(){
+                this.$axios.$get("http://localhost:8080/SportsClubManagement_war_exploded/api/administrators")
+                    .then(administrators => {
+                        this.administrators = administrators
+                    });
             }
         }
     }

@@ -1,6 +1,13 @@
 <template>
   <div>
     <b-container>
+      <div>
+        Name: <b-input v-model="name" type="text"/>
+      </div>
+      <div>
+        <button class="btn btn-link" v-on:click.prevent="filterModality">Filter</button>
+        <button class="btn btn-link" v-on:click.prevent="filterReset">Reset Filters</button>
+      </div>
       <b-table striped over :items="modalities" :fields="fields">
         <template v-slot:cell(actions)="row">
           <nuxt-link class="btn btn-link" :to="`/modalities/${row.item.id}`">Details</nuxt-link>
@@ -18,7 +25,8 @@
         data () {
             return {
                 fields: ['id', 'name','actions'],
-                modalities: []
+                modalities: [],
+                name:""
             }
         },
         created () {
@@ -29,9 +37,22 @@
         },
         methods: {
             destroy(id) {
-                console.log(id)
-                this.$axios.$delete(`http://localhost:8080/SportsClubManagement_war_exploded/api/modalities/${id}`)
-                //window.location.reload()
+                this.$axios.$delete(`http://localhost:8080/SportsClubManagement_war_exploded/api/modalities/${id}`);
+                this.$axios.$get("http://localhost:8080/SportsClubManagement_war_exploded/api/modalities")
+                    .then(modalities => {
+                        this.modalities = modalities
+                    });
+            },
+            filterModality(){
+                this.$axios.$post("http://localhost:8080/SportsClubManagement_war_exploded/api/modalities/filter", {
+                    name: this.name,
+                }).then(modalities => this.modalities = modalities);
+            },
+            filterReset(){
+                this.$axios.$get("http://localhost:8080/SportsClubManagement_war_exploded/api/modalities")
+                    .then(modalities => {
+                        this.modalities = modalities
+                    });
             }
         }
     }

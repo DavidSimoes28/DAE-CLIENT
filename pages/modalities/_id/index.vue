@@ -22,6 +22,9 @@
         <b v-if="row.item.endDate.minutes < 10">{{row.item.endDate.hour+":"+row.item.endDate.minutes+"0"}}</b>
         <b v-else>{{row.item.endDate.hour+":"+row.item.endDate.minutes}}</b>
       </template>
+      <template v-slot:cell(actions)="row">
+        <button class="btn btn-link" v-on:click.prevent="removeSchedule(row.item.id)" >Delete</button>
+      </template>
     </b-table>
     <p v-else>No schedules enrolled.</p>
 
@@ -36,7 +39,7 @@
                 modality: {},
                 coachFields: ['username', 'name', 'email'],
                 athleteFields: ['username', 'name', 'email'],
-                schedulesFields: ['id','startDate','endDate']
+                schedulesFields: ['id','startDate','endDate',"actions"]
             }
         },
         computed: {
@@ -51,6 +54,15 @@
             },
             schedules() {
                 return this.modality.schedules || []
+            }
+        },
+        methods:{
+            removeSchedule(id){
+                this.$axios.$put(`http://localhost:8080/SportsClubManagement_war_exploded/api/modalities/${this.id}/remove/schedule/${id}`)
+                    .then(() => {
+                        this.$axios.$get(`http://localhost:8080/SportsClubManagement_war_exploded/api/modalities/${this.id}`)
+                            .then(modality => this.modality = modality || {})
+                    });
             }
         },
         created() {

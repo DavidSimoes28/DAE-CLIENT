@@ -5,7 +5,7 @@
       <p>Username: {{ coach.username }}</p>
       <p>Name: {{ coach.name }}</p>
       <p>Email: {{ coach.email }}</p>
-      <nuxt-link to="/athletes">Back</nuxt-link>
+      <nuxt-link to="/coaches">Back</nuxt-link>
 
       <h4>Modalities enrolled:</h4>
       <b-table v-if="modalities.length"  striped over :items="modalities" :fields="modalitiesFields">
@@ -20,7 +20,11 @@
       <p v-else>No echelons enrolled.</p>
 
       <h4>Classes enrolled:</h4>
-      <b-table v-if="classes.length" striped over :items="classes" :fields="classesFields" />
+      <b-table v-if="classes.length" striped over :items="classes" :fields="classesFields">
+        <template v-slot:cell(actions)="row">
+          <nuxt-link class="btn btn-link" :to="`/coaches/${username}/${row.item.id}/presences`">Presences</nuxt-link>
+        </template>
+      </b-table>
       <p v-else>No classes enrolled.</p>
     </b-container>
   </div>
@@ -32,7 +36,7 @@
                 coach: {},
                 modalitiesFields: ['id','name','details'],
                 echelonsFields: ["id","name","modalityId"],
-                classesFields: ['id']
+                classesFields: ['id',"modalityID","actions"]
             }
         },
         computed: {

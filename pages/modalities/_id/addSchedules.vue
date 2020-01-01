@@ -34,15 +34,10 @@
         },
         methods:{
           addSchedule(id){
-              let scheduleToSend;
-              this.$axios.$get(`http://localhost:8080/SportsClubManagement_war_exploded/api/modalities/`+id)
-                  .then(schedule =>{
-                      scheduleToSend = schedule || {};
-                      this.$axios.$put(`http://localhost:8080/SportsClubManagement_war_exploded/api/modalities/${this.id}/add/schedule`,this.modality,scheduleToSend)
-                          .then(() => {
-                              this.$router.push('/modalities')
-                          });
-                  });
+            this.$axios.$put(`http://localhost:8080/SportsClubManagement_war_exploded/api/modalities/${this.id}/add/schedule/${id}`)
+                .then(() => {
+                    this.$router.push(`/modalities/${this.id}`)
+                });
           }
         },
         created() {
