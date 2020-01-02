@@ -1,19 +1,25 @@
 <template>
   <div>
     <b-container>
-      <!--<div>
-        Username: <b-input v-model="username" type="text"/>
+      <div>
+        Product:<b-input v-model="productId" type="text"/>
+
+        ProductTypeId: <b-select v-model="productTypeId" :options="productTypes" required value-field="id" text-field='type'>
+        <template v-slot:first>
+          <option :value="0">None</option>
+        </template>
+      </b-select>
       </div>
       <div>
-        <button class="btn btn-link" v-on:click.prevent="filterPartners">Filter</button>
+        <button class="btn btn-link" v-on:click.prevent="filterProduct">Filter</button>
         <button class="btn btn-link" v-on:click.prevent="filterReset">Reset Filters</button>
-      </div>-->
+      </div>
 
       <b-table striped over :items="products" :fields="fields">
         <template v-slot:cell(actions)="row">
           <nuxt-link class="btn btn-link" :to="`/products/${row.item.id}`">Details</nuxt-link>
-          <!--<nuxt-link class="btn btn-link" :to="`/partners/${row.item.username}/update`">Update</nuxt-link>
-          <button class="btn btn-link" v-on:click.prevent="destroy(row.item.username)" >Delete</button>-->
+          <nuxt-link class="btn btn-link" :to="`/products/${row.item.id}/update`">Update</nuxt-link>
+          <button class="btn btn-link" v-on:click.prevent="destroy(row.item.id)" >Delete</button>
         </template>
       </b-table>
       <div><nuxt-link to="/">Back</nuxt-link></div>
@@ -28,32 +34,46 @@
             return {
                 fields: ['id', 'productTypeId', 'valueInEur','stock','actions'],
                 products: [],
-                username: "",
+                productTypeId:"0",
+                productId:"0",
+                productTypes:[]
             }
         },
         created () {
             this.$axios.$get("http://localhost:8080/SportsClubManagement_war_exploded/api/products")
                 .then(products => {
                     this.products = products;
-                })
+                });
+            this.$axios.$get("http://localhost:8080/SportsClubManagement_war_exploded/api/productTypes/")
+                .then(productTypes => {
+                    this.productTypes = productTypes;
+                });
         },
         methods: {
-            /*destroy(username) {
-                this.$axios.$delete(`http://localhost:8080/SportsClubManagement_war_exploded/api/partners/${username}`);
-                this.$axios.$get("http://localhost:8080/SportsClubManagement_war_exploded/api/partners")
-                    .then(partners => this.partners = partners);
+            destroy(id) {
+                this.$axios.$delete(`http://localhost:8080/SportsClubManagement_war_exploded/api/products/${id}`)
+                    .then(() => {
+                        this.$axios.$get("http://localhost:8080/SportsClubManagement_war_exploded/api/products")
+                            .then(products => {
+                                this.products = products;
+                            })
+                    }).catch(()=>{
+                        this.$toast.error("Can't delete this product")
+                })
+
             },
             filterProduct(){
-                this.$axios.$post("http://localhost:8080/SportsClubManagement_war_exploded/api/partners/filter", {
-                    username: this.username,
-                }).then(partners => this.partners = partners);
+                this.$axios.$post("http://localhost:8080/SportsClubManagement_war_exploded/api/products/filter", {
+                    id: this.productId,
+                    productTypeId: this.productTypeId
+                }).then(products => this.products = products);
             },
             filterReset(){
-                this.$axios.$get("http://localhost:8080/SportsClubManagement_war_exploded/api/partners")
-                    .then(partners => {
-                        this.partners = partners
+                this.$axios.$get("http://localhost:8080/SportsClubManagement_war_exploded/api/products")
+                    .then(products => {
+                        this.products = products
                     });
-            }*/
+            }
         }
     }
 </script>

@@ -33,7 +33,7 @@
             this.$axios.$get(`http://localhost:8080/SportsClubManagement_war_exploded/api/products/${this.id}`)
                 .then(product =>{
                     this.product = product || {};
-                    this.$axios.$get(`http://localhost:8080/SportsClubManagement_war_exploded/api/productType/${this.product.productTypeId}`)
+                    this.$axios.$get(`http://localhost:8080/SportsClubManagement_war_exploded/api/productTypes/${this.product.productTypeId}`)
                         .then(productType =>{
                             this.productType = productType || {};
                         });

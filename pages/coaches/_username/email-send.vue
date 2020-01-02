@@ -35,7 +35,7 @@
         },
         methods: {
             send() {
-                this.$axios.$post(`http://localhost:8080/SportsClubManagement_war_exploded/api/administrators/email/send`, {
+                this.$axios.$post(`http://localhost:8080/SportsClubManagement_war_exploded/api/coaches/email/send`, {
                     subject: this.subject,
                     message: this.message,
                     users: this.users

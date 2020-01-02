@@ -38,16 +38,16 @@
                 });
                 promise.then(() => {
                     this.$toast.success("You are logged in!");
-                    // check if the user $auth.user object is set
-                    console.log(this.$auth.user);
-                    // TODO redirect based on the user role
-                    // eg:
-                    /*if (this.$auth.user.groups.includes('Teacher')) {
-                        this.$router.push('/students')
-                    } else if (this.$auth.user.groups.includes('Student')) {
-                        this.$router.push('/students/' + this.username)
-                    }*/
-                    this.$router.push('/')
+
+                    if (this.$auth.user.groups.includes('Coach')) {
+                        this.$router.push('/coaches/'+this.username)
+                    } else if (this.$auth.user.groups.includes('Athlete')) {
+                        this.$router.push('/athletes/' + this.username)
+                    }else if (this.$auth.user.groups.includes('Partner')) {
+                        this.$router.push('/partners/' + this.username)
+                    }else if (this.$auth.user.groups.includes('Administrators')) {
+                        this.$router.push('/')
+                    }
                 });
                 promise.catch(() => {
                     this.$toast.error(

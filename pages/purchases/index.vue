@@ -12,8 +12,8 @@
       <b-table striped over :items="purchases" :fields="fields">
         <template v-slot:cell(actions)="row">
           <nuxt-link class="btn btn-link" :to="`/purchases/${row.item.id}`">Details</nuxt-link>
-          <!--<nuxt-link class="btn btn-link" :to="`/partners/${row.item.username}/update`">Update</nuxt-link>
-          <button class="btn btn-link" v-on:click.prevent="destroy(row.item.username)" >Delete</button>-->
+          <nuxt-link class="btn btn-link" :to="`/purchases/${row.item.id}/update`">Update</nuxt-link>
+          <button class="btn btn-link" v-on:click.prevent="destroy(row.item.id)" >Delete</button>
         </template>
       </b-table>
       <div><nuxt-link to="/">Back</nuxt-link></div>
