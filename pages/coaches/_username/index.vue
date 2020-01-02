@@ -6,6 +6,8 @@
       <p>Name: {{ coach.name }}</p>
       <p>Email: {{ coach.email }}</p>
       <nuxt-link to="/coaches">Back</nuxt-link>
+      &nbsp
+      <nuxt-link :to="`/coaches/${this.username}/email-send`">Send Email to Athletes</nuxt-link>
 
       <h4>Modalities enrolled:</h4>
       <b-table v-if="modalities.length"  striped over :items="modalities" :fields="modalitiesFields">

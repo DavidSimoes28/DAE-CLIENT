@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h4>Modality Details:</h4>
+    <h4>Class Details:</h4>
     <p>Id: {{ classe.id }}</p>
     <p>Coach Username: {{ classe.coachUsername }}</p>
 

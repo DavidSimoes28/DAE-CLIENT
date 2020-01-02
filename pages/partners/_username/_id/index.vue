@@ -1,8 +1,6 @@
 <template>
   <b-container>
     <h4>Upload receipt of payment</h4>
-    <p>{{payment.id}}</p>
-    <p>{{payment.purchaseId}}</p>
 
     <form @submit.prevent="upload">
       <b-form-file v-model="file" :state="Boolean(file)" placeholder="Choose a file or drop it here..." drop-placeholder="Drop file here..." />
@@ -16,7 +14,7 @@
         data() {
             return {
                 payment: {},
-                paymentField: ['id', 'purchaseId',"stateId","actions"],
+                purchase: {},
                 file: null
             }
         },
@@ -34,7 +32,7 @@
 
                   formData.append('file', this.file);
 
-                  this.$axios.$post(`/api/file/${this.payment.id}/upload`, formData, {
+                  this.$axios.$post(`/api/file/${this.purchase.id}/payment/${this.payment.id}/upload`, formData, {
                       headers: {
                           'Content-Type': 'multipart/form-data'
                       }
@@ -53,7 +51,13 @@
         },
         created() {
             this.$axios.$get(`http://localhost:8080/SportsClubManagement_war_exploded/api/payments/${this.id}`)
-                .then(payment => this.payment = payment || {});
+                .then(payment =>{
+                    this.payment = payment || {};
+                    this.$axios.$get(`http://localhost:8080/SportsClubManagement_war_exploded/api/purchases/${this.payment.purchaseId}`)
+                        .then(purchase =>{
+                            this.purchase = purchase || {};
+                        });
+                });
         },
     }
 </script>
