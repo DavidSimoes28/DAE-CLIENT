@@ -38,7 +38,8 @@
                       }
                   })
                       .then(() => {
-                          this.$toast.success('file sent')
+                          this.$toast.success('file sent');
+                          this.$router.push(`/partners/${this.username}`);
                       })
                       .catch(error => {
                           this.$toast.error('error sending the file')
