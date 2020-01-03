@@ -10,6 +10,9 @@
     <b-table v-if="products.length" striped over :items="products" :fields="fields" />
     <p v-else>Present athletes enrolled.</p>
 
+    <h4>Payments Lists:</h4>
+    <b-table striped over :items="payments" :fields="paymentsFields"/>
+
     <nuxt-link class="btn btn-info" to="/purchases">Back</nuxt-link>
     <nuxt-link class="btn btn-success" :to="`/purchases/${id}/addPayment`">Add Payment</nuxt-link>
   </b-container>
@@ -20,7 +23,9 @@
             return {
                 purchase: {},
                 fields: ['id', 'productTypeId', 'valueInEur'],
-                products: []
+                products: [],
+                payments: [],
+                paymentsFields: ['id', 'stateId', 'receiptId','valueInEur']
             }
         },
         computed: {
@@ -33,6 +38,10 @@
                 .then(purchase =>{
                     this.purchase = purchase || {};
                     this.products = purchase.products || [];
+                });
+            this.$axios.$get("http://localhost:8080/SportsClubManagement_war_exploded/api/purchases/"+this.id+"/payments")
+                .then(payments => {
+                    this.payments = payments;
                 });
         },
     }
