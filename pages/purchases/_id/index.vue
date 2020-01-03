@@ -6,6 +6,10 @@
     <p>Release Date: {{ purchase.releaseDate }}</p>
     <p>Price: {{ purchase.price }}</p>
 
+    <nuxt-link class="btn btn-info" to="/purchases">Back</nuxt-link>
+    <nuxt-link class="btn btn-success" :to="`/purchases/${id}/addPayment`">Add Payment</nuxt-link>
+    <nuxt-link class="btn btn-success" :to="`/purchases/${id}/removePayment`">Remove Payment</nuxt-link>
+
     <h4>Products enrolled:</h4>
     <b-table v-if="products.length" striped over :items="products" :fields="fields" />
     <p v-else>Present athletes enrolled.</p>
@@ -13,8 +17,6 @@
     <h4>Payments Lists:</h4>
     <b-table striped over :items="payments" :fields="paymentsFields"/>
 
-    <nuxt-link class="btn btn-info" to="/purchases">Back</nuxt-link>
-    <nuxt-link class="btn btn-success" :to="`/purchases/${id}/addPayment`">Add Payment</nuxt-link>
   </b-container>
 </template>
 <script>
