@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <h4>Class Details:</h4>
+    <h4>Purchase Details:</h4>
     <p>Id: {{ purchase.id }}</p>
     <p>Coach Username: {{ purchase.partnerUsername }}</p>
     <p>Release Date: {{ purchase.releaseDate }}</p>
