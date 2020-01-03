@@ -1,17 +1,18 @@
 <template>
   <div>
+    <b-container>
     <form @submit.prevent="send">
       <div>
         subject:
-        <input v-model="subject" type="text">
+        <b-input v-model="subject" type="text"/>
       </div>
       <div>
-        message:<textarea v-model="message" name="message"></textarea>
+        message:<b-textarea v-model="message" name="message"></b-textarea>
       </div>
-      <nuxt-link :to="`/administrators`">Go to Administrators</nuxt-link>
+      <nuxt-link class="btn btn-info" :to="`/administrators`">Go to Administrators</nuxt-link>
       &nbsp;
-      <button @click.prevent="send">SEND</button>
-
+      <button class="btn btn-success" @click.prevent="send">SEND</button>
+      <br><br>
       <div>
         Modality: <b-select v-model="modalityId" :options="modalities" required value-field="id" text-field="name">
         <template v-slot:first>
@@ -35,6 +36,7 @@
 
       <b-table striped over :items="users" :fields="fields"/>
     </form>
+    </b-container>
   </div>
 </template>
 <script>

@@ -1,25 +1,20 @@
 <template>
   <div>
-    <h1>Create a new Administrator</h1>
-    <form @submit.prevent="create">
-      <div>
-        username: <input v-model="username" type="text">
-      </div>
-      <div>
-        password: <input v-model="password" type="password">
-      </div>
-      <div>
-        name: <input v-model="name" type="text">
-      </div>
-      <div>
-        email: <input v-model="email" type="email">
-      </div>
+    <b-container>
+      <h1>Create a new Administrator</h1>
+      <form @submit.prevent="create">
+          username: <b-input v-model="username" type="text"/>
+          password: <b-input v-model="password" type="password"/>
+          name: <b-input v-model="name" type="text"/>
+          email: <b-input v-model="email" type="email"/>
 
-      <p class="text-danger" v-show="errorMsg">{{ errorMsg }}</p>
-      <nuxt-link to="/administrators">Return</nuxt-link>
-      <button type="reset" @click="errorMsg = false">RESET</button>
-      <button @click.prevent="create">CREATE</button>
-    </form>
+        <p class="text-danger" v-show="errorMsg">{{ errorMsg }}</p>
+        <button class="btn btn-danger"  type="reset" @click="errorMsg = false">RESET</button>
+        <button class="btn btn-success" @click.prevent="create">CREATE</button>
+        <br><br>
+        <div><nuxt-link class="btn btn-info" to="/administrators">Return</nuxt-link></div>
+      </form>
+    </b-container>
   </div>
 </template>
 <script>

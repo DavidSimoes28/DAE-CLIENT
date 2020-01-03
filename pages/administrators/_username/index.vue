@@ -4,7 +4,7 @@
     <p>Username: {{ administrator.username }}</p>
     <p>Name: {{ administrator.name }}</p>
     <p>Email: {{ administrator.email }}</p>
-    <nuxt-link to="/administrators">Back</nuxt-link>
+    <nuxt-link class="btn btn-info" to="/administrators">Back</nuxt-link>
   </b-container>
 </template>
 <script>
