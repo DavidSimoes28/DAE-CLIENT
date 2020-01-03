@@ -13,7 +13,6 @@
         <template v-slot:cell(actions)="row">
           <nuxt-link class="btn btn-link" :to="`/purchases/${row.item.id}`">Details</nuxt-link>
           <nuxt-link class="btn btn-link" :to="`/purchases/${row.item.id}/update`">Update</nuxt-link>
-          <button class="btn btn-link" v-on:click.prevent="destroy(row.item.id)" >Delete</button>
         </template>
       </b-table>
       <div><nuxt-link class="btn btn-secondary" to="/purchases/create">Create a New Purchase</nuxt-link></div>
