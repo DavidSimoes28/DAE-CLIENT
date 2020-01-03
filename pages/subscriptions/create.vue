@@ -69,9 +69,11 @@
           Price: <input v-model="price" type="number">
         </div>
         <p class="text-danger" v-show="errorMsg">{{ errorMsg }}</p>
-        <nuxt-link to="/subscriptions">Return</nuxt-link>
-        <button type="reset" @click="errorMsg = false">RESET</button>
-        <button @click.prevent="create">CREATE</button>
+
+        <button class="btn btn-danger" type="reset" @click="errorMsg = false">RESET</button>
+        <button class="btn btn-success" @click.prevent="create">CREATE</button>
+        <br><br>
+        <div><nuxt-link class="btn btn-info" to="/subscriptions">Return</nuxt-link></div>
       </form>
     </b-container>
   </div>

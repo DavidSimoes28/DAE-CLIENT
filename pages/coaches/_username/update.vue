@@ -1,23 +1,21 @@
 <template>
+  <b-container>
   <div>
     <h1>Create a new Coach</h1>
     <form @submit.prevent="create">
-      <div>
-        username: <input v-model="coach.username" type="text">
-      </div>
-      <div>
-        name: <input v-model="coach.name" type="text">
-      </div>
-      <div>
-        email: <input v-model="coach.email" type="email">
-      </div>
+        username: <b-input v-model="coach.username" type="text"/>
+        name: <b-input v-model="coach.name" type="text"/>
+        email: <b-input v-model="coach.email" type="email"/>
 
       <p class="text-danger" v-show="errorMsg">{{ errorMsg }}</p>
-      <nuxt-link to="/coaches">Return</nuxt-link>
-      <button type="reset" @click="errorMsg = false">RESET</button>
-      <button @click.prevent="update">UPDATE</button>
+      <button class="btn btn-danger" type="reset" @click="errorMsg = false">RESET</button>
+      <button class="btn btn-success" @click.prevent="update">UPDATE</button>
+      <br><br>
+      <div><nuxt-link class="btn btn-info" to="/coaches">Return</nuxt-link></div>
+
     </form>
   </div>
+  </b-container>
 </template>
 <script>
     export default {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container>
-      <h1>Create a new Subscription</h1>
+      <h1>Create a new Class</h1>
       <form @submit.prevent="create">
 
         Coach: <b-select v-model="coachUsername" :options="coaches" required value-field="id" text-field='username' v-on:change="getCoach(coachUsername)">
@@ -52,9 +52,10 @@
           Date: <input v-model="date" type="date">
         </div>
         <p class="text-danger" v-show="errorMsg">{{ errorMsg }}</p>
-        <nuxt-link to="/classes">Return</nuxt-link>
-        <button type="reset" @click="errorMsg = false">RESET</button>
-        <button @click.prevent="create">CREATE</button>
+        <button class="btn btn-danger" type="reset" @click="errorMsg = false">RESET</button>
+        <button class="btn btn-success" @click.prevent="create">CREATE</button>
+        <br><br>
+        <div><nuxt-link class="btn btn-info" to="/classes">Return</nuxt-link></div>
       </form>
     </b-container>
   </div>

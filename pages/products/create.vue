@@ -1,11 +1,7 @@
-private int productTypeId;
-private String description;
-private Double valueInEur;
-private int stock;
-
 
 
 <template>
+  <b-container>
   <div>
     <h1>Create a new Product</h1>
     <form @submit.prevent="create">
@@ -17,19 +13,19 @@ private int stock;
 
         Description: <b-input v-model="description" type="text"/>
 
-
         Value: <b-input v-model="valueInEur" type="number"/>
-
 
         Stock: <b-input v-model="stock" type="number"/>
 
 
       <p class="text-danger" v-show="errorMsg">{{ errorMsg }}</p>
-      <nuxt-link to="/products">Return</nuxt-link>
-      <button type="reset" @click="errorMsg = false">RESET</button>
-      <button @click.prevent="create">CREATE</button>
+      <button class="btn btn-danger" type="reset" @click="errorMsg = false">RESET</button>
+      <button class="btn btn-success" @click.prevent="create">CREATE</button>
+      <br><br>
+      <div><nuxt-link class="btn btn-info" to="/products">Return</nuxt-link></div>
     </form>
   </div>
+  </b-container>
 </template>
 <script>
     export default {

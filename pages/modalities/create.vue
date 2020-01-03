@@ -1,12 +1,13 @@
 <template>
+  <b-container>
   <div>
-    <h1>Create a new Administrator</h1>
+    <h1>Create a new Modality</h1>
     <form @submit.prevent="create">
       <div>
-        Name: <input v-model="name" type="text">
+        Name: <b-input v-model="name" type="text"/>
       </div>
       <div>
-        SportsYear: <input v-model="sportYear" type="number">
+        SportsYear: <b-input v-model="sportYear" type="number"/>
       </div>
       <div>
         Active: <b-select v-model="active">
@@ -18,12 +19,16 @@
       </b-select>
       </div>
 
+
       <p class="text-danger" v-show="errorMsg">{{ errorMsg }}</p>
-      <nuxt-link to="/modalities">Return</nuxt-link>
-      <button type="reset" @click="errorMsg = false">RESET</button>
-      <button @click.prevent="create">CREATE</button>
+
+      <button class="btn btn-danger" type="reset" @click="errorMsg = false">RESET</button>
+      <button class="btn btn-success" @click.prevent="create">CREATE</button>
+      <br><br>
+      <div><nuxt-link class="btn btn-info" to="/modalities">Return</nuxt-link></div>
     </form>
   </div>
+  </b-container>
 </template>
 <script>
     export default {

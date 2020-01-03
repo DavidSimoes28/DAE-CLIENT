@@ -4,9 +4,9 @@
 
     <form @submit.prevent="upload">
       <b-form-file v-model="file" :state="Boolean(file)" placeholder="Choose a file or drop it here..." drop-placeholder="Drop file here..." />
-      <button @click.prevent="upload">UPLOAD</button>
+      <button class="btn btn-success" @click.prevent="upload">UPLOAD</button>
     </form>
-    <nuxt-link :to="`/partners/${username}`">Back</nuxt-link>
+    <nuxt-link class="btn btn-info" :to="`/partners/${username}`">Back</nuxt-link>
   </b-container>
 </template>
 <script>

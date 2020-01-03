@@ -8,7 +8,7 @@
     <b-table v-if="athletesPresent.length" striped over :items="athletesPresent" :fields="athletesPresentFields" />
     <p v-else>Present athletes enrolled.</p>
 
-    <nuxt-link to="/classes">Back</nuxt-link>
+    <nuxt-link class="btn btn-info" to="/classes">Back</nuxt-link>
   </b-container>
 </template>
 <script>

@@ -6,9 +6,10 @@
           <nuxt-link class="btn btn-link" :to="`/subscriptions/${row.item.id}`">Details</nuxt-link>
         </template>
       </b-table>
-      <nuxt-link to="/">Back</nuxt-link>
+      <nuxt-link class="btn btn-secondary" to="/subscriptions/create">Create a New Subscription</nuxt-link>
+      <div><nuxt-link class="btn btn-info" to="/">Back</nuxt-link></div>
     </b-container>
-    <nuxt-link to="/subscriptions/create">Create a New Subscription</nuxt-link>
+
   </div>
 </template>
 <script>

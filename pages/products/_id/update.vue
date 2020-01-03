@@ -3,6 +3,7 @@ private String description;
 private Double valueInEur;
 private int stock;
 <template>
+  <b-container>
   <div>
     <h1>Update a Product</h1>
     <form @submit.prevent="update">
@@ -15,18 +16,18 @@ private int stock;
 
       Description: <b-input v-model="product.description" type="text"/>
 
-
       Value: <b-input v-model="product.valueInEur" type="number"/>
-
 
       Stock: <b-input v-model="product.stock" type="number"/>
 
       <p class="text-danger" v-show="errorMsg">{{ errorMsg }}</p>
-      <nuxt-link to="/products">Return</nuxt-link>
-      <button type="reset" @click="errorMsg = false">RESET</button>
-      <button @click.prevent="update">Update</button>
+      <button class="btn btn-danger" type="reset" @click="errorMsg = false">RESET</button>
+      <button class="btn btn-success" @click.prevent="update">Update</button>
+      <br><br>
+      <nuxt-link class="btn btn-info" to="/products">Return</nuxt-link>
     </form>
   </div>
+  </b-container>
 </template>
 <script>
     export default {

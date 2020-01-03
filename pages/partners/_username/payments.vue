@@ -9,7 +9,7 @@
     </b-table>
     <p v-else>Payments enrolled.</p>
 
-    <nuxt-link :to="`/partners/${username}`">Back</nuxt-link>
+    <nuxt-link class="btn btn-info" :to="`/partners/${username}`">Back</nuxt-link>
   </b-container>
 </template>
 <script>

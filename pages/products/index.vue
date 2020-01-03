@@ -11,8 +11,8 @@
       </b-select>
       </div>
       <div>
-        <button class="btn btn-link" v-on:click.prevent="filterProduct">Filter</button>
-        <button class="btn btn-link" v-on:click.prevent="filterReset">Reset Filters</button>
+        <button class="btn btn-outline-primary" v-on:click.prevent="filterProduct">Filter</button>
+        <button class="btn btn-outline-primary" v-on:click.prevent="filterReset">Reset Filters</button>
       </div>
 
       <b-table striped over :items="products" :fields="fields">
@@ -22,8 +22,8 @@
           <button class="btn btn-link" v-on:click.prevent="destroy(row.item.id)" >Delete</button>
         </template>
       </b-table>
-      <div><nuxt-link to="/">Back</nuxt-link></div>
-      <div><nuxt-link to="/products/create">Create a New Product</nuxt-link></div>
+      <div><nuxt-link class="btn btn-secondary" to="/products/create">Create a New Product</nuxt-link></div>
+      <div><nuxt-link class="btn btn-info" to="/">Back</nuxt-link></div>
     </b-container>
 
   </div>

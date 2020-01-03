@@ -10,8 +10,8 @@
     <b-table v-if="products.length" striped over :items="products" :fields="fields" />
     <p v-else>Present athletes enrolled.</p>
 
-    <nuxt-link to="/purchases">Back</nuxt-link>
-    <nuxt-link :to="`/purchases/${id}/addPayment`">Add Payment</nuxt-link>
+    <nuxt-link class="btn btn-info" to="/purchases">Back</nuxt-link>
+    <nuxt-link class="btn btn-success" :to="`/purchases/${id}/addPayment`">Add Payment</nuxt-link>
   </b-container>
 </template>
 <script>

@@ -16,7 +16,7 @@
     </b-table>
     <p v-else>Not present athletes enrolled.</p>
 
-    <nuxt-link to="/classes">Back</nuxt-link>
+    <nuxt-link class="btn btn-info" to="/classes">Back</nuxt-link>
   </b-container>
 </template>
 <script>

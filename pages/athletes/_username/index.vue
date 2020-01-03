@@ -5,8 +5,8 @@
       <p>Username: {{ athletes.username }}</p>
       <p>Name: {{ athletes.name }}</p>
       <p>Email: {{ athletes.email }}</p>
-      <nuxt-link to="/athletes">Back</nuxt-link>
-      <nuxt-link :to="`/athletes/${username}/payments`">Payments</nuxt-link>
+      <nuxt-link class="btn btn-info" to="/athletes">Back</nuxt-link>
+      <nuxt-link  class="btn btn-outline-primary" :to="`/athletes/${username}/payments`">Payments</nuxt-link>
 
       <h4>Modalities enrolled:</h4>
       <b-table v-if="modalities.length"  striped over :items="modalities" :fields="modalitiesFields">

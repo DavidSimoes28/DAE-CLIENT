@@ -1,22 +1,26 @@
 <template>
+  <b-container>
   <div>
     <h1>Update a Athlete</h1>
     <form @submit.prevent="update">
       <div>
-        name: <input v-model="athlete.name" type="text">
+        name: <b-input v-model="athlete.name" type="text"/>
       </div>
       <div>
-        password: <input v-model="athlete.password" type="password">
+        password: <b-input v-model="athlete.password" type="password"/>
       </div>
       <div>
-        email: <input v-model="athlete.email" type="email">
+        email: <b-input v-model="athlete.email" type="email"/>
       </div>
       <p class="text-danger" v-show="errorMsg">{{ errorMsg }}</p>
-      <nuxt-link to="/athletes">Return</nuxt-link>
-      <button type="reset" @click="errorMsg = false">RESET</button>
-      <button @click.prevent="update">Update</button>
+
+      <button  class="btn btn-danger" type="reset" @click="errorMsg = false">RESET</button>
+      <button  class="btn btn-success" @click.prevent="update">Update</button>
+      <br><br>
+      <nuxt-link  class="btn btn-info" to="/athletes">Return</nuxt-link>
     </form>
   </div>
+  </b-container>
 </template>
 <script>
     export default {

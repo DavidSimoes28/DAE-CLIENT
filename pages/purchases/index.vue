@@ -16,8 +16,8 @@
           <button class="btn btn-link" v-on:click.prevent="destroy(row.item.id)" >Delete</button>
         </template>
       </b-table>
-      <div><nuxt-link to="/">Back</nuxt-link></div>
-      <div><nuxt-link to="/purchases/create">Create a New Purchase</nuxt-link></div>
+      <div><nuxt-link class="btn btn-secondary" to="/purchases/create">Create a New Purchase</nuxt-link></div>
+      <div><nuxt-link class="btn btn-info" to="/">Back</nuxt-link></div>
     </b-container>
 
   </div>

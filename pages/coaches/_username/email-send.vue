@@ -8,7 +8,7 @@
       <div>
         Message:<b-textarea v-model="message" name="message"></b-textarea>
       </div>
-      <nuxt-link :to="`/coaches/${this.username}`">Back</nuxt-link>
+      <nuxt-link class="btn btn-info" :to="`/coaches/${this.username}`">Back</nuxt-link>
       &nbsp
       <button class="btn btn-success" @click.prevent="send">SEND</button>
 
