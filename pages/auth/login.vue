@@ -45,7 +45,7 @@
                         this.$router.push('/athletes/' + this.username)
                     }else if (this.$auth.user.groups.includes('Partner')) {
                         this.$router.push('/partners/' + this.username)
-                    }else if (this.$auth.user.groups.includes('Administrators')) {
+                    }else if (this.$auth.user.groups.includes('Administrator')) {
                         this.$router.push('/')
                     }
                 });

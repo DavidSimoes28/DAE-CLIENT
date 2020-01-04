@@ -5,8 +5,7 @@
       <p>Username: {{ coach.username }}</p>
       <p>Name: {{ coach.name }}</p>
       <p>Email: {{ coach.email }}</p>
-      <nuxt-link class="btn btn-info" to="/coaches">Back</nuxt-link>
-      &nbsp
+      <nuxt-link class="btn btn-info" to="/coaches" v-show="this.auth">Back</nuxt-link>
       <nuxt-link class="btn btn-success" :to="`/coaches/${this.username}/email-send`">Send Email to Athletes</nuxt-link>
 
       <h4>Modalities enrolled:</h4>
@@ -38,7 +37,8 @@
                 coach: {},
                 modalitiesFields: ['id','name','details'],
                 echelonsFields: ["id","name","modalityId"],
-                classesFields: ['id',"modalityID","actions"]
+                classesFields: ['id',"modalityID","actions"],
+                auth: false
             }
         },
         computed: {
@@ -58,6 +58,7 @@
         created() {
             this.$axios.$get(`http://localhost:8080/SportsClubManagement_war_exploded/api/coaches/${this.username}`)
                 .then(coach => this.coach = coach || {})
+            this.auth = this.$auth.user.groups.includes('Administrator');
         },
     }
 </script>

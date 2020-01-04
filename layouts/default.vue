@@ -1,10 +1,9 @@
 <template>
   <div>
-    <b-container>
+
       <b-form @submit.prevent="logout">
         <b-button type="Submit" class="btn btn-dark">Logout</b-button>
       </b-form>
-    </b-container>
     <nuxt />
   </div>
 </template>
